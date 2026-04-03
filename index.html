@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAR MART – Coming Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --gold:#C9A84C;
+            --gold-light:#F0D080;
+            --dark:#0A0A0A;
+            --darker:#050505;
+            --cream:#FAF5EB;
+            --text-muted:#999;
+            --red:#E63946;
+        }
+        body{background:var(--dark);color:#fff;font-family:'DM Sans',sans-serif;overflow-x:hidden}
+
+        /* NAV */
+        nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15)}
+        .logo-nav{display:flex;align-items:center;gap:10px}
+        .logo-img{height:38px;width:38px;border-radius:50%;object-fit:cover}
+        .logo-text{font-family:'Playfair Display',serif;font-weight:700;font-size:20px;letter-spacing:2px;color:#fff}
+        .logo-text span{color:var(--gold)}
+        .nav-badge{background:var(--gold);color:#000;font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;letter-spacing:1px}
+
+        /* HERO */
+        .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 20px 60px;position:relative;overflow:hidden}
+        .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%)}
+        .hero-lines{position:absolute;inset:0;opacity:0.04}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border-radius:40px;margin-bottom:30px;animation:fadeSlide 0.8s ease both}
+        .badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 1.5s infinite}
+        @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
+        h1{font-family:'Playfair Display',serif;font-size:clamp(52px,9vw,110px);font-weight:900;line-height:0.92;letter-spacing:-2px;margin-bottom:12px;animation:fadeSlide 0.9s 0.1s ease both;opacity:0}
+        h1 .accent{color:var(--gold);display:block}
+        .hero-sub{font-size:clamp(14px,2.5vw,22px);color:rgba(255,255,255,0.55);font-weight:300;margin-bottom:10px;animation:fadeSlide 1s 0.2s ease both;opacity:0;letter-spacing:0.5px}
+        .hero-bangla{font-size:clamp(15px,2.5vw,20px);color:var(--gold-light);font-weight:400;margin-bottom:40px;animation:fadeSlide 1s 0.3s ease both;opacity:0}
+        .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeSlide 1s 0.4s ease both;opacity:0}
+        .btn-primary{background:var(--gold);color:#000;font-weight:500;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;padding:16px 40px;border-radius:4px;border:none;cursor:pointer;transition:all 0.3s}
+        .btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.35)}
+        .btn-secondary{background:transparent;color:#fff;font-weight:400;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;padding:16px 40px;border-radius:4px;border:1px solid rgba(255,255,255,0.25);cursor:pointer;transition:all 0.3s}
+        .btn-secondary:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+        @keyframes fadeSlide{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+        /* FEATURES STRIP */
+        .features{display:flex;justify-content:center;gap:0;flex-wrap:wrap;padding:40px 20px;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(201,168,76,0.04)}
+        .feat{display:flex;align-items:center;gap:12px;padding:16px 32px;border-right:1px solid rgba(255,255,255,0.08)}
+        .feat:last-child{border-right:none}
+        .feat-icon{font-size:22px}
+        .feat-text strong{display:block;font-size:14px;font-weight:500;color:#fff}
+        .feat-text span{font-size:12px;color:var(--text-muted)}
+
+        /* COUNTDOWN */
+        .countdown-section{padding:70px 20px;text-align:center}
+        .section-eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+        .countdown-title{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,48px);font-weight:700;margin-bottom:40px}
+        .countdown-title span{color:var(--gold)}
+        .clock{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+        .clock-item{text-align:center;min-width:80px}
+        .clock-num{font-family:'Playfair Display',serif;font-size:56px;font-weight:900;line-height:1;color:#fff;display:block}
+        .clock-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-top:6px}
+        .clock-sep{font-family:'Playfair Display',serif;font-size:52px;font-weight:300;color:rgba(201,168,76,0.4);align-self:flex-start;margin-top:4px}
+
+        /* CLOTHES GRID */
+        .collection{padding:70px 20px;max-width:1200px;margin:0 auto}
+        .section-header{text-align:center;margin-bottom:50px}
+        .section-header h2{font-family:'Playfair Display',serif;font-size:clamp(30px,5vw,52px);font-weight:700;margin-bottom:12px}
+        .section-header p{color:var(--text-muted);font-size:15px;max-width:500px;margin:0 auto}
+        .clothes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:2px}
+        .cloth-item{position:relative;overflow:hidden;aspect-ratio:3/4;background:#111;cursor:pointer}
+        .cloth-item:first-child{grid-column:span 2;aspect-ratio:16/9}
+        .cloth-img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease}
+        .cloth-item:hover .cloth-img{transform:scale(1.07)}
+        .cloth-overlay{position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);opacity:0;transition:opacity 0.3s}
+        .cloth-item:hover .cloth-overlay{opacity:1}
+        .cloth-label{position:absolute;bottom:16px;left:16px;right:16px;transform:translateY(10px);opacity:0;transition:all 0.3s}
+        .cloth-item:hover .cloth-label{transform:translateY(0);opacity:1}
+        .cloth-label strong{display:block;font-size:15px;font-weight:500}
+        .cloth-label span{font-size:12px;color:var(--gold)}
+
+        /* OFFER BANNER */
+        .offer-banner{margin:4px;background:linear-gradient(135deg,#1a1200,#2a1e00,#1a1200);border:1px solid rgba(201,168,76,0.3);padding:60px 40px;text-align:center;position:relative;overflow:hidden}
+        .offer-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:300px;background:radial-gradient(ellipse,rgba(201,168,76,0.12) 0%,transparent 70%);pointer-events:none}
+        .offer-tag{display:inline-block;background:var(--red);color:#fff;font-size:13px;font-weight:500;padding:6px 20px;border-radius:3px;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+        .offer-title{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,52px);font-weight:900;margin-bottom:16px;color:var(--gold)}
+        .offer-items{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin:30px 0}
+        .offer-item{text-align:center}
+        .offer-item .big{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;color:#fff}
+        .offer-item .small{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-top:4px}
+        .offer-sep{width:1px;background:rgba(201,168,76,0.2);align-self:stretch}
+
+        /* CONTACT */
+        .contact{padding:70px 20px;max-width:900px;margin:0 auto}
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+        .contact-info h3{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;margin-bottom:8px}
+        .contact-info h3 span{color:var(--gold)}
+        .contact-info p{color:var(--text-muted);font-size:14px;line-height:1.7;margin-bottom:30px}
+        .contact-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px}
+        .ci-icon{width:40px;height:40px;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+        .ci-text strong{display:block;font-size:13px;font-weight:500;color:#fff}
+        .ci-text span{font-size:12px;color:var(--text-muted);line-height:1.5}
+        .notify-form{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:32px}
+        .notify-form h4{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:6px}
+        .notify-form p{font-size:13px;color:var(--text-muted);margin-bottom:24px;line-height:1.6}
+        .form-group{margin-bottom:16px}
+        .form-group input{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s}
+        .form-group input:focus{border-color:var(--gold)}
+        .form-group input::placeholder{color:rgba(255,255,255,0.3)}
+        .notify-btn{width:100%;background:var(--gold);color:#000;font-family:'DM Sans',sans-serif;font-weight:500;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;padding:15px;border-radius:6px;border:none;cursor:pointer;transition:all 0.3s}
+        .notify-btn:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+        /* SOCIAL */
+        .social-strip{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255,0.06)}
+        .social-strip p{color:var(--text-muted);font-size:13px;margin-bottom:16px;letter-spacing:1px;text-transform:uppercase}
+        .social-links{display:flex;justify-content:center;gap:12px}
+        .social-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff;text-decoration:none;font-size:13px;padding:10px 20px;border-radius:6px;transition:all 0.3s;cursor:pointer}
+        .social-btn.wa{border-color:rgba(37,211,102,0.3);color:#25D366}
+        .social-btn.wa:hover{background:rgba(37,211,102,0.1)}
+        .social-btn.gm{border-color:rgba(234,67,53,0.3);color:#EA4335}
+        .social-btn.gm:hover{background:rgba(234,67,53,0.1)}
+
+        /* FOOTER */
+        footer{text-align:center;padding:30px 20px;border-top:1px solid rgba(255,255,255,0.06)}
+        footer p{font-size:12px;color:rgba(255,255,255,0.2);letter-spacing:1px}
+
+        @media(max-width:768px){
+            nav{padding:14px 20px}
+            .feat{padding:12px 16px;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);width:50%}
+            .cloth-item:first-child{grid-column:span 1;aspect-ratio:3/4}
+            .contact-grid{grid-template-columns:1fr}
+            .offer-sep{display:none}
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="logo-nav">
+        <img src="img/logo.jpeg" class="logo-img" alt="Star Mart Logo">
+        <div class="logo-text">STAR <span>MART</span></div>
+    </div>
+    <div class="nav-badge">Coming Soon</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-bg"></div>
+    <svg class="hero-lines" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
+        <line x1="0" y1="200" x2="1200" y2="200" stroke="white" stroke-width="0.5"/>
+        <line x1="0" y1="400" x2="1200" y2="400" stroke="white" stroke-width="0.5"/>
+        <line x1="0" y1="600" x2="1200" y2="600" stroke="white" stroke-width="0.5"/>
+        <line x1="200" y1="0" x2="200" y2="800" stroke="white" stroke-width="0.5"/>
+        <line x1="600" y1="0" x2="600" y2="800" stroke="white" stroke-width="0.5"/>
+        <line x1="1000" y1="0" x2="1000" y2="800" stroke="white" stroke-width="0.5"/>
+    </svg>
+    <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Launch হচ্ছে খুব শিগগিরই
+    </div>
+    <h1>STAR<span class="accent">MART</span></h1>
+    <p class="hero-sub">Something Big is Coming</p>
+    <p class="hero-bangla">আমাদের Official Website খুব শিগগিরই Launch হচ্ছে!</p>
+    <div class="hero-cta">
+        <button class="btn-primary" onclick="document.querySelector('.notify-form').scrollIntoView({behavior:'smooth'})">Notify Me</button>
+        <button class="btn-secondary">Our Story</button>
+    </div>
+</section>
+
+<!-- FEATURES STRIP -->
+<div class="features">
+    <div class="feat">
+        <span class="feat-icon">&#x1F69A;</span>
+        <div class="feat-text"><strong>All Bangladesh</strong><span>FREE Delivery</span></div>
+    </div>
+    <div class="feat">
+        <span class="feat-icon">&#x1F4E6;</span>
+        <div class="feat-text"><strong>Premium Packaging</strong><span>Every Order</span></div>
+    </div>
+    <div class="feat">
+        <span class="feat-icon">&#x26A1;</span>
+        <div class="feat-text"><strong>100% Hassle-Free</strong><span>Easy Shopping</span></div>
+    </div>
+    <div class="feat">
+        <span class="feat-icon">&#x1F381;</span>
+        <div class="feat-text"><strong>Mega Discounts</strong><span>On Launch Day</span></div>
+    </div>
+</div>
+
+<!-- COUNTDOWN -->
+<section class="countdown-section">
+    <p class="section-eyebrow">Launch Countdown</p>
+    <h2 class="countdown-title">Stay <span>Ready</span> for the Drop</h2>
+    <div class="clock">
+        <div class="clock-item"><span class="clock-num" id="days">00</span><span class="clock-label">Days</span></div>
+        <span class="clock-sep">:</span>
+        <div class="clock-item"><span class="clock-num" id="hours">00</span><span class="clock-label">Hours</span></div>
+        <span class="clock-sep">:</span>
+        <div class="clock-item"><span class="clock-num" id="mins">00</span><span class="clock-label">Minutes</span></div>
+        <span class="clock-sep">:</span>
+        <div class="clock-item"><span class="clock-num" id="secs">00</span><span class="clock-label">Seconds</span></div>
+    </div>
+</section>
+
+<!-- CLOTHES GRID -->
+<section class="collection">
+    <div class="section-header">
+        <p class="section-eyebrow">Sneak Peek</p>
+        <h2>Upcoming <span style="color:var(--gold)">Collection</span></h2>
+        <p>A glimpse into what awaits &#8212; curated styles coming your way</p>
+    </div>
+    <div class="clothes-grid">
+
+        <!-- PHOTO 1 — Wide Banner -->
+        <div class="cloth-item">
+            <img src="img/img1.jpeg" class="cloth-img" alt="Featured Collection" style="width:100%;height:100%;object-fit:cover;">
+            <div class="cloth-overlay"></div>
+            <div class="cloth-label"><strong>Featured Collection</strong><span>Launching Soon &#10022;</span></div>
+        </div>
+
+        <!-- PHOTO 2 -->
+        <div class="cloth-item">
+            <img src="img/img2.jpeg" class="cloth-img" alt="New Arrival" style="width:100%;height:100%;object-fit:cover;">
+            <div class="cloth-overlay"></div>
+            <div class="cloth-label"><strong>New Arrival</strong><span>Launching Soon &#10022;</span></div>
+        </div>
+
+        <!-- PHOTO 3 -->
+        <div class="cloth-item">
+            <img src="img/img3.jpeg" class="cloth-img" alt="Men's Wear" style="width:100%;height:100%;object-fit:cover;">
+            <div class="cloth-overlay"></div>
+            <div class="cloth-label"><strong>Men's Wear</strong><span>Launching Soon &#10022;</span></div>
+        </div>
+
+        <!-- PHOTO 4 -->
+        <div class="cloth-item">
+            <img src="img/img4.jpeg" class="cloth-img" alt="Women's Wear" style="width:100%;height:100%;object-fit:cover;">
+            <div class="cloth-overlay"></div>
+            <div class="cloth-label"><strong>Women's Wear</strong><span>Launching Soon &#10022;</span></div>
+        </div>
+
+        <!-- PHOTO 5 -->
+        <div class="cloth-item">
+            <img src="img/img5.jpeg" class="cloth-img" alt="Ethnic Wear" style="width:100%;height:100%;object-fit:cover;">
+            <div class="cloth-overlay"></div>
+            <div class="cloth-label"><strong>Ethnic Wear</strong><span>Launching Soon &#10022;</span></div>
+        </div>
+
+        <!-- PHOTO 6 -->
+        <div class="cloth-item">
+            <img src="img/img6.jpeg" class="cloth-img" alt="Casual Wear" style="width:100%;height:100%;object-fit:cover;">
+            <div class="cloth-overlay"></div>
+            <div class="cloth-label"><strong>Casual Wear</strong><span>Launching Soon &#10022;</span></div>
+        </div>
+
+        <!-- PHOTO 7 -->
+        <div class="cloth-item">
+            <img src="img/img7.jpeg" class="cloth-img" alt="Kids Wear" style="width:100%;height:100%;object-fit:cover;">
+            <div class="cloth-overlay"></div>
+            <div class="cloth-label"><strong>Kids Wear</strong><span>Launching Soon &#10022;</span></div>
+        </div>
+
+        <!-- PHOTO 8 -->
+        <div class="cloth-item">
+            <img src="img/img8.jpeg" class="cloth-img" alt="Festive Collection" style="width:100%;height:100%;object-fit:cover;">
+            <div class="cloth-overlay"></div>
+            <div class="cloth-label"><strong>Festive Collection</strong><span>Launching Soon &#10022;</span></div>
+        </div>
+
+    </div>
+</section>
+
+<!-- OFFER BANNER -->
+<div style="padding:0 4px">
+    <div class="offer-banner">
+        <div class="offer-glow"></div>
+        <span class="offer-tag">&#x1F389; Launch Offer</span>
+        <h2 class="offer-title">Mega Discount Awaits!</h2>
+        <p style="color:rgba(255,255,255,0.5);font-size:15px;margin-bottom:10px">Don't miss it &#8212; Stay connected with STAR MART</p>
+        <div class="offer-items">
+            <div class="offer-item"><div class="big">FREE</div><div class="small">Delivery Nationwide</div></div>
+            <div class="offer-sep"></div>
+            <div class="offer-item"><div class="big">&#x1F48E;</div><div class="small">Premium Packaging</div></div>
+            <div class="offer-sep"></div>
+            <div class="offer-item"><div class="big">&#x1F525;</div><div class="small">Mega Discounts</div></div>
+        </div>
+        <p style="color:rgba(255,255,255,0.35);font-size:13px;letter-spacing:1px">ঘরে বসেই, just a few taps &#8212; আপনার favourite style আপনার হাতেই</p>
+    </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact">
+    <div class="contact-grid">
+        <div class="contact-info">
+            <h3>Find <span>Us</span></h3>
+            <p>Visit us at our outlets in Magura or reach out via WhatsApp &amp; Gmail. We're here for you!</p>
+            <div class="contact-item">
+                <div class="ci-icon">&#x1F4CD;</div>
+                <div class="ci-text"><strong>Flagship Outlet</strong><span>Keshobmor, Magura</span></div>
+            </div>
+            <div class="contact-item">
+                <div class="ci-icon">&#x1F3E2;</div>
+                <div class="ci-text"><strong>Central Outlet</strong><span>Mehedi Tower, 2nd Floor<br>Syad Ator Ali Road, Magura</span></div>
+            </div>
+            <div class="contact-item">
+                <div class="ci-icon">&#x1F4AC;</div>
+                <div class="ci-text"><strong>WhatsApp</strong><span>01806965887</span></div>
+            </div>
+            <div class="contact-item">
+                <div class="ci-icon">&#x2709;&#xFE0F;</div>
+                <div class="ci-text"><strong>Gmail</strong><span>starmartmagura7600@gmail.com</span></div>
+            </div>
+        </div>
+        <div class="notify-form">
+            <h4>Get Notified &#x1F514;</h4>
+            <p>Launch এর সাথে থাকছে Mega Discount Offers। আগেই Register করুন!</p>
+            <div class="form-group"><input type="text" placeholder="Your Name" /></div>
+            <div class="form-group"><input type="tel" placeholder="Phone / WhatsApp Number" /></div>
+            <div class="form-group"><input type="email" placeholder="Email Address (Optional)" /></div>
+            <button class="notify-btn" onclick="this.textContent='&#x2713; Registered!';this.style.background='#2d7a4e'">Notify Me on Launch</button>
+        </div>
+    </div>
+</section>
+
+<!-- SOCIAL -->
+<div class="social-strip">
+    <p>Stay Connected</p>
+    <div class="social-links">
+        <a class="social-btn wa" href="https://wa.me/8801806965887" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WhatsApp Us
+        </a>
+        <a class="social-btn gm" href="mailto:starmartmagura7600@gmail.com">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+            Email Us
+        </a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 STAR MART &mdash; Magura, Bangladesh. All rights reserved.</p>
+</footer>
+
+<script>
+    const launchDate = new Date();
+    launchDate.setDate(launchDate.getDate() + 30);
+    launchDate.setHours(0,0,0,0);
+
+    function tick() {
+        const now = new Date();
+        const diff = launchDate - now;
+        if (diff <= 0) {
+            ['days','hours','mins','secs'].forEach(id => document.getElementById(id).textContent = '00');
+            return;
+        }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        document.getElementById('days').textContent  = String(d).padStart(2,'0');
+        document.getElementById('hours').textContent = String(h).padStart(2,'0');
+        document.getElementById('mins').textContent  = String(m).padStart(2,'0');
+        document.getElementById('secs').textContent  = String(s).padStart(2,'0');
+    }
+    tick();
+    setInterval(tick, 1000);
+</script>
+
+</body>
+</html>
