@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STAR MART – Coming Soon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>STAR MART — Coming Soon</title>
+    <link rel="icon" type="image/x-icon" href="img/logo.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         :root{
@@ -30,7 +31,7 @@
         .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 20px 60px;position:relative;overflow:hidden}
         .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%)}
         .hero-lines{position:absolute;inset:0;opacity:0.04}
-        .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border-radius:40px;margin-bottom:30px;animation:fadeSlide 0.8s ease both}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border-radius:40px;margin-bottom:14px;animation:fadeSlide 0.8s ease both}
         .badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 1.5s infinite}
         @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.4)}}
         h1{font-family:'Playfair Display',serif;font-size:clamp(52px,9vw,110px);font-weight:900;line-height:0.92;letter-spacing:-2px;margin-bottom:12px;animation:fadeSlide 0.9s 0.1s ease both;opacity:0}
@@ -62,6 +63,23 @@
         .clock-num{font-family:'Playfair Display',serif;font-size:56px;font-weight:900;line-height:1;color:#fff;display:block}
         .clock-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-top:6px}
         .clock-sep{font-family:'Playfair Display',serif;font-size:52px;font-weight:300;color:rgba(201,168,76,0.4);align-self:flex-start;margin-top:4px}
+
+        /* OUR STORY */
+        .our-story{padding:80px 20px;max-width:900px;margin:0 auto;position:relative}
+        .our-story::before{content:'';position:absolute;left:50%;top:0;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.5))}
+        .story-inner{display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:center}
+        .story-left{text-align:right;position:relative}
+        .story-eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block}
+        .story-heading{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,58px);font-weight:900;line-height:1;color:#fff}
+        .story-heading em{color:var(--gold);font-style:italic;display:block}
+        .story-line{width:60px;height:2px;background:linear-gradient(to right,transparent,var(--gold));margin:24px 0 0 auto}
+        .story-right{}
+        .story-text{font-size:16px;color:rgba(255,255,255,0.65);line-height:1.85;margin-bottom:28px;font-weight:300}
+        .story-text strong{color:#fff;font-weight:500}
+        .story-tagline{display:inline-flex;flex-direction:column;gap:4px;padding:20px 28px;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.25);border-radius:8px;position:relative;overflow:hidden}
+        .story-tagline::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),transparent)}
+        .story-tagline-brand{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:2px}
+        .story-tagline-motto{font-size:13px;color:var(--gold);letter-spacing:1.5px;font-style:italic}
 
         /* CLOTHES GRID */
         .collection{padding:70px 20px;max-width:1200px;margin:0 auto}
@@ -112,14 +130,19 @@
         .notify-btn:hover{background:var(--gold-light);transform:translateY(-1px)}
 
         /* SOCIAL */
-        .social-strip{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255,0.06)}
-        .social-strip p{color:var(--text-muted);font-size:13px;margin-bottom:16px;letter-spacing:1px;text-transform:uppercase}
-        .social-links{display:flex;justify-content:center;gap:12px}
-        .social-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#fff;text-decoration:none;font-size:13px;padding:10px 20px;border-radius:6px;transition:all 0.3s;cursor:pointer}
-        .social-btn.wa{border-color:rgba(37,211,102,0.3);color:#25D366}
-        .social-btn.wa:hover{background:rgba(37,211,102,0.1)}
-        .social-btn.gm{border-color:rgba(234,67,53,0.3);color:#EA4335}
-        .social-btn.gm:hover{background:rgba(234,67,53,0.1)}
+        .social-strip{text-align:center;padding:50px 20px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(201,168,76,0.02)}
+        .social-strip-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:6px}
+        .social-strip-title span{color:var(--gold)}
+        .social-strip-sub{color:var(--text-muted);font-size:13px;margin-bottom:24px;letter-spacing:1px}
+        .social-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+        .social-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,0.1);color:#fff;text-decoration:none;font-size:13px;font-weight:500;padding:12px 22px;border-radius:8px;transition:all 0.3s;cursor:pointer;background:rgba(255,255,255,0.04);letter-spacing:0.5px}
+        .social-btn:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+        .social-btn.wa{border-color:rgba(37,211,102,0.35);color:#25D366}
+        .social-btn.wa:hover{background:rgba(37,211,102,0.12);box-shadow:0 8px 24px rgba(37,211,102,0.15)}
+        .social-btn.gm{border-color:rgba(234,67,53,0.35);color:#EA4335}
+        .social-btn.gm:hover{background:rgba(234,67,53,0.12);box-shadow:0 8px 24px rgba(234,67,53,0.15)}
+        .social-btn.fb{border-color:rgba(24,119,242,0.35);color:#1877F2}
+        .social-btn.fb:hover{background:rgba(24,119,242,0.12);box-shadow:0 8px 24px rgba(24,119,242,0.15)}
 
         /* FOOTER */
         footer{text-align:center;padding:30px 20px;border-top:1px solid rgba(255,255,255,0.06)}
@@ -131,6 +154,9 @@
             .cloth-item:first-child{grid-column:span 1;aspect-ratio:3/4}
             .contact-grid{grid-template-columns:1fr}
             .offer-sep{display:none}
+            .story-inner{grid-template-columns:1fr;gap:30px}
+            .story-left{text-align:left}
+            .story-line{margin:24px auto 0 0}
         }
     </style>
 </head>
@@ -142,7 +168,12 @@
         <img src="img/logo.jpeg" class="logo-img" alt="Star Mart Logo">
         <div class="logo-text">STAR <span>MART</span></div>
     </div>
-    <div class="nav-badge">Coming Soon</div>
+    <div class="social-links">
+        <a class="social-btn wa" href="https://wa.me/8801806965887" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WhatsApp Us
+        </a>
+    </div>
 </nav>
 
 <!-- HERO -->
@@ -158,33 +189,33 @@
     </svg>
     <div class="hero-badge">
         <span class="badge-dot"></span>
-        Launch হচ্ছে খুব শিগগিরই
+        Launch হতে আর বেশি দেরি নেই
     </div>
     <h1>STAR<span class="accent">MART</span></h1>
     <p class="hero-sub">Something Big is Coming</p>
-    <p class="hero-bangla">আমাদের Official Website খুব শিগগিরই Launch হচ্ছে!</p>
+    <p class="hero-bangla">আমাদের Official Website শীঘ্রই Launch হচ্ছে!</p>
     <div class="hero-cta">
         <button class="btn-primary" onclick="document.querySelector('.notify-form').scrollIntoView({behavior:'smooth'})">Notify Me</button>
-        <button class="btn-secondary">Our Story</button>
+        <button class="btn-secondary" onclick="document.getElementById('our-story').scrollIntoView({behavior:'smooth'})">Our Story</button>
     </div>
 </section>
 
 <!-- FEATURES STRIP -->
 <div class="features">
     <div class="feat">
-        <span class="feat-icon">&#x1F69A;</span>
+        <span class="feat-icon">🚚</span>
         <div class="feat-text"><strong>All Bangladesh</strong><span>FREE Delivery</span></div>
     </div>
     <div class="feat">
-        <span class="feat-icon">&#x1F4E6;</span>
+        <span class="feat-icon">📦</span>
         <div class="feat-text"><strong>Premium Packaging</strong><span>Every Order</span></div>
     </div>
     <div class="feat">
-        <span class="feat-icon">&#x26A1;</span>
+        <span class="feat-icon">⚡</span>
         <div class="feat-text"><strong>100% Hassle-Free</strong><span>Easy Shopping</span></div>
     </div>
     <div class="feat">
-        <span class="feat-icon">&#x1F381;</span>
+        <span class="feat-icon">🎁</span>
         <div class="feat-text"><strong>Mega Discounts</strong><span>On Launch Day</span></div>
     </div>
 </div>
@@ -204,71 +235,80 @@
     </div>
 </section>
 
+<!-- OUR STORY -->
+<section id="our-story" class="our-story">
+    <div class="story-inner">
+        <div class="story-left">
+            <span class="story-eyebrow">Who We Are</span>
+            <h2 class="story-heading">Our<em>Story</em></h2>
+            <div class="story-line"></div>
+        </div>
+        <div class="story-right">
+            <p class="story-text">
+                <strong>STAR MART</strong> started as a retail clothing outlet in Magura with a clear focus — offering <strong>quality products at the right price.</strong>
+            </p>
+            <p class="story-text">
+                With growing customer demand, we expanded our presence and are now taking the next step by <strong>going online.</strong>
+            </p>
+            <p class="story-text">
+                Our goal is simple: make shopping <strong>faster, easier, and more accessible</strong> across Bangladesh.
+            </p>
+            <div class="story-tagline">
+                <span class="story-tagline-brand">STAR MART</span>
+                <span class="story-tagline-motto">Best Style. Best Price. Always.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- CLOTHES GRID -->
 <section class="collection">
     <div class="section-header">
         <p class="section-eyebrow">Sneak Peek</p>
         <h2>Upcoming <span style="color:var(--gold)">Collection</span></h2>
-        <p>A glimpse into what awaits &#8212; curated styles coming your way</p>
+        <p>A glimpse into what awaits — curated styles coming your way</p>
     </div>
     <div class="clothes-grid">
-
-        <!-- PHOTO 1 — Wide Banner -->
         <div class="cloth-item">
-            <img src="img/img8.jpeg" class="cloth-img" alt="Featured Collection" style="width:100%;height:100%;object-fit:cover;">
+            <img src="img/img8.jpeg" class="cloth-img" alt="Featured Collection">
             <div class="cloth-overlay"></div>
-            <div class="cloth-label"><strong>Featured Collection</strong><span>Launching Soon &#10022;</span></div>
+            <div class="cloth-label"><strong>Featured Collection</strong><span>Launching Soon ✦</span></div>
         </div>
-
-        <!-- PHOTO 2 -->
         <div class="cloth-item">
-            <img src="img/img7.jpeg" class="cloth-img" alt="Kids Wear" style="width:100%;height:100%;object-fit:cover;">
+            <img src="img/img7.jpeg" class="cloth-img" alt="T-Shirt">
             <div class="cloth-overlay"></div>
-            <div class="cloth-label"><strong>Kids Wear</strong><span>Launching Soon &#10022;</span></div>
+            <div class="cloth-label"><strong>T-Shirt</strong><span>Launching Soon ✦</span></div>
         </div>
-
-        <!-- PHOTO 3 -->
         <div class="cloth-item">
-            <img src="img/img3.jpeg" class="cloth-img" alt="Men's Wear" style="width:100%;height:100%;object-fit:cover;">
+            <img src="img/img3.jpeg" class="cloth-img" alt="Men's Wear">
             <div class="cloth-overlay"></div>
-            <div class="cloth-label"><strong>Men's Wear</strong><span>Launching Soon &#10022;</span></div>
+            <div class="cloth-label"><strong>Men's Wear</strong><span>Launching Soon ✦</span></div>
         </div>
-
-        <!-- PHOTO 4 -->
         <div class="cloth-item">
-            <img src="img/img4.jpeg" class="cloth-img" alt="Women's Wear" style="width:100%;height:100%;object-fit:cover;">
+            <img src="img/img4.jpeg" class="cloth-img" alt="Men's Wear">
             <div class="cloth-overlay"></div>
-            <div class="cloth-label"><strong>Women's Wear</strong><span>Launching Soon &#10022;</span></div>
+            <div class="cloth-label"><strong>Men's Wear</strong><span>Launching Soon ✦</span></div>
         </div>
-
-        <!-- PHOTO 5 -->
         <div class="cloth-item">
-            <img src="img/img5.jpeg" class="cloth-img" alt="Ethnic Wear" style="width:100%;height:100%;object-fit:cover;">
+            <img src="img/img5.jpeg" class="cloth-img" alt="Ethnic Wear">
             <div class="cloth-overlay"></div>
-            <div class="cloth-label"><strong>Ethnic Wear</strong><span>Launching Soon &#10022;</span></div>
+            <div class="cloth-label"><strong>Ethnic Wear</strong><span>Launching Soon ✦</span></div>
         </div>
-
-        <!-- PHOTO 6 -->
         <div class="cloth-item">
-            <img src="img/img6.jpeg" class="cloth-img" alt="Casual Wear" style="width:100%;height:100%;object-fit:cover;">
+            <img src="img/img10.jpeg" class="cloth-img" alt="Premium Polo & Jeans">
             <div class="cloth-overlay"></div>
-            <div class="cloth-label"><strong>Casual Wear</strong><span>Launching Soon &#10022;</span></div>
+            <div class="cloth-label"><strong>Premium Polo & Jeans</strong><span>Launching Soon ✦</span></div>
         </div>
-
-        <!-- PHOTO 7 -->
         <div class="cloth-item">
-            <img src="img/img2.jpeg" class="cloth-img" alt="Kids Wear" style="width:100%;height:100%;object-fit:cover;">
+            <img src="img/img2.jpeg" class="cloth-img" alt="Panjabi">
             <div class="cloth-overlay"></div>
-            <div class="cloth-label"><strong>Kids Wear</strong><span>Launching Soon &#10022;</span></div>
+            <div class="cloth-label"><strong>Panjabi</strong><span>Launching Soon ✦</span></div>
         </div>
-
-        <!-- PHOTO 8 -->
         <div class="cloth-item">
-            <img src="img/img8.jpeg" class="cloth-img" alt="Festive Collection" style="width:100%;height:100%;object-fit:cover;">
+            <img src="img/img8.jpeg" class="cloth-img" alt="Festive Collection">
             <div class="cloth-overlay"></div>
-            <div class="cloth-label"><strong>Festive Collection</strong><span>Launching Soon &#10022;</span></div>
+            <div class="cloth-label"><strong>Festive Collection</strong><span>Launching Soon ✦</span></div>
         </div>
-
     </div>
 </section>
 
@@ -276,17 +316,17 @@
 <div style="padding:0 4px">
     <div class="offer-banner">
         <div class="offer-glow"></div>
-        <span class="offer-tag">&#x1F389; Launch Offer</span>
+        <span class="offer-tag">🎉 Launch Offer</span>
         <h2 class="offer-title">Mega Discount Awaits!</h2>
-        <p style="color:rgba(255,255,255,0.5);font-size:15px;margin-bottom:10px">Don't miss it &#8212; Stay connected with STAR MART</p>
+        <p style="color:rgba(255,255,255,0.5);font-size:15px;margin-bottom:10px">Don't miss it — Stay connected with STAR MART</p>
         <div class="offer-items">
             <div class="offer-item"><div class="big">FREE</div><div class="small">Delivery Nationwide</div></div>
             <div class="offer-sep"></div>
-            <div class="offer-item"><div class="big">&#x1F48E;</div><div class="small">Premium Packaging</div></div>
+            <div class="offer-item"><div class="big">💎</div><div class="small">Premium Packaging</div></div>
             <div class="offer-sep"></div>
-            <div class="offer-item"><div class="big">&#x1F525;</div><div class="small">Mega Discounts</div></div>
+            <div class="offer-item"><div class="big">🔥</div><div class="small">Mega Discounts</div></div>
         </div>
-        <p style="color:rgba(255,255,255,0.35);font-size:13px;letter-spacing:1px">ঘরে বসেই, just a few taps &#8212; আপনার favourite style আপনার হাতেই</p>
+        <p style="color:rgba(255,255,255,0.35);font-size:13px;letter-spacing:1px">এক ক্লিকে, just a few taps — তোমার favourite style এখন তোমার কাছে</p>
     </div>
 </div>
 
@@ -297,36 +337,37 @@
             <h3>Find <span>Us</span></h3>
             <p>Visit us at our outlets in Magura or reach out via WhatsApp &amp; Gmail. We're here for you!</p>
             <div class="contact-item">
-                <div class="ci-icon">&#x1F4CD;</div>
+                <div class="ci-icon">📍</div>
                 <div class="ci-text"><strong>Flagship Outlet</strong><span>Keshobmor, Magura</span></div>
             </div>
             <div class="contact-item">
-                <div class="ci-icon">&#x1F3E2;</div>
+                <div class="ci-icon">🏢</div>
                 <div class="ci-text"><strong>Central Outlet</strong><span>Mehedi Tower, 2nd Floor<br>Syad Ator Ali Road, Magura</span></div>
             </div>
             <div class="contact-item">
-                <div class="ci-icon">&#x1F4AC;</div>
+                <div class="ci-icon">💬</div>
                 <div class="ci-text"><strong>WhatsApp</strong><span>01806965887</span></div>
             </div>
             <div class="contact-item">
-                <div class="ci-icon">&#x2709;&#xFE0F;</div>
+                <div class="ci-icon">✉️</div>
                 <div class="ci-text"><strong>Gmail</strong><span>starmartmagura7600@gmail.com</span></div>
             </div>
         </div>
         <div class="notify-form">
-            <h4>Get Notified &#x1F514;</h4>
-            <p>Launch এর সাথে থাকছে Mega Discount Offers। আগেই Register করুন!</p>
-            <div class="form-group"><input type="text" placeholder="Your Name" /></div>
-            <div class="form-group"><input type="tel" placeholder="Phone / WhatsApp Number" /></div>
-            <div class="form-group"><input type="email" placeholder="Email Address (Optional)" /></div>
-            <button class="notify-btn" onclick="this.textContent='&#x2713; Registered!';this.style.background='#2d7a4e'">Notify Me on Launch</button>
+            <h4>Get Notified 🔔</h4>
+            <p>Launch এ পেতে চান Mega Discount Offers? এখনই Register করুন!</p>
+            <div class="form-group"><input type="text" id="notifyName" placeholder="Your Name" /></div>
+            <div class="form-group"><input type="tel" id="notifyPhone" placeholder="Phone / WhatsApp Number" /></div>
+            <div class="form-group"><input type="email" id="notifyEmail" placeholder="Email Address (Optional)" /></div>
+            <button class="notify-btn" id="notifyBtn" onclick="sendToWhatsApp()">Notify Me on Launch</button>
         </div>
     </div>
 </section>
 
 <!-- SOCIAL -->
 <div class="social-strip">
-    <p>Stay Connected</p>
+    <h3 class="social-strip-title">Stay <span>Connected</span></h3>
+    <p class="social-strip-sub">Follow us &amp; never miss an update</p>
     <div class="social-links">
         <a class="social-btn wa" href="https://wa.me/8801806965887" target="_blank">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
@@ -336,6 +377,10 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
             Email Us
         </a>
+        <a class="social-btn fb" href="https://www.facebook.com/share/18GdDdTeYS/" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook Page
+        </a>
     </div>
 </div>
 
@@ -344,6 +389,7 @@
 </footer>
 
 <script>
+    // COUNTDOWN
     const launchDate = new Date();
     launchDate.setDate(launchDate.getDate() + 30);
     launchDate.setHours(0,0,0,0);
@@ -366,6 +412,26 @@
     }
     tick();
     setInterval(tick, 1000);
+
+    // WHATSAPP NOTIFY
+    function sendToWhatsApp() {
+        const name  = document.getElementById('notifyName').value.trim();
+        const phone = document.getElementById('notifyPhone').value.trim();
+        const email = document.getElementById('notifyEmail').value.trim();
+
+        if (!name) { alert('Please enter your name.'); return; }
+        if (!phone) { alert('Please enter your phone / WhatsApp number.'); return; }
+
+        const msg = `🌟 *STAR MART — Launch Notification Request* 🌟\n\n👤 *Name:* ${name}\n📱 *Phone/WhatsApp:* ${phone}${email ? '\n📧 *Email:* ' + email : ''}\n\n✅ Please notify me on launch day with Mega Discount offers!`;
+
+        const waUrl = `https://wa.me/8801806965887?text=${encodeURIComponent(msg)}`;
+        window.open(waUrl, '_blank');
+
+        const btn = document.getElementById('notifyBtn');
+        btn.textContent = '✓ Opening WhatsApp...';
+        btn.style.background = '#2d7a4e';
+        btn.style.color = '#fff';
+    }
 </script>
 
 </body>
